@@ -1,4 +1,4 @@
-package com.starwars;
+package com.thread_count;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

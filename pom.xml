@@ -8,11 +8,11 @@
 		<version>2.2.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.starwars</groupId>
-	<artifactId>characters</artifactId>
+	<groupId>com.threadcount</groupId>
+	<artifactId>market</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>characters</name>
-	<description>Starwars character search</description>
+	<description>MarketPlace</description>
 
 	<properties>
 		<java.version>1.8</java.version>
