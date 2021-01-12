@@ -1,9 +1,10 @@
 package com.thread_count.app.guest_account;
 
-import com.thread_count.app.product.Product;
+import com.thread_count.app.cart.Cart;
+import com.thread_count.app.order.Order;
 
 import javax.persistence.*;
-import java.util.Arrays;
+import java.util.Set;
 
 @Entity
 @Table(name = "GUEST_ACCOUNT")
@@ -22,10 +23,11 @@ public class GuestAccount {
     private String middleName;
     @Column(name = "LAST_NAME")
     private String lastName;
-//    @Column(name = "ORDER")
-//    private Order[] orders;
-//    @Column(name = "CARTS")
-//    private Cart[] cars;
+    @ManyToMany(mappedBy = "guestAccounts")
+    private Set<Order> orders;
+    @OneToOne
+    @JoinColumn(name = "CART_ID")
+    private Cart cart;
 
     public int getId() {
         return Id;
@@ -75,14 +77,15 @@ public class GuestAccount {
         this.lastName = lastName;
     }
 
-    //    public Order[] getOrders() {
-//        return orders;
-//    }
-//
-//    public void setOrders(Order[] orders) {
-//        this.orders = orders;
-//    }
-//
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
+
+    //
 //    public Cart[] getCars() {
 //        return cars;
 //    }

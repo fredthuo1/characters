@@ -1,5 +1,6 @@
 package com.thread_count.app.cart;
 
+import com.thread_count.app.guest_account.GuestAccount;
 import com.thread_count.app.product.Product;
 
 import javax.persistence.*;
@@ -31,6 +32,9 @@ public class Cart {
     private BigDecimal transactionCost;
     @Column(name = "TOTAL_AMOUNT")
     private BigDecimal totalAmount;
+    @OneToOne(mappedBy = "cart", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private GuestAccount guestAccount;
 
     public int getId() {
         return id;

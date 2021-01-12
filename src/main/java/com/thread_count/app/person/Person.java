@@ -1,6 +1,7 @@
 package com.thread_count.app.person;
 
 import com.thread_count.app.address.Address;
+import com.thread_count.app.customer_account.CustomerAccount;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -33,7 +34,10 @@ public class Person {
             joinColumns = @JoinColumn(name = "person_id"),
             inverseJoinColumns = @JoinColumn(name = "address_id")
     )
-    Set<Address> addresses;
+    private Set<Address> addresses;
+    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private CustomerAccount customerAccount;
 
     public int getId() {
         return Id;
@@ -105,6 +109,14 @@ public class Person {
 
     public void setAddresses(Set<Address> addresses) {
         this.addresses = addresses;
+    }
+
+    public CustomerAccount getCustomerAccount() {
+        return customerAccount;
+    }
+
+    public void setCustomerAccount(CustomerAccount customerAccount) {
+        this.customerAccount = customerAccount;
     }
 
     @Override
