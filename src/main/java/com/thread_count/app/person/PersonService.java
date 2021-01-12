@@ -17,7 +17,7 @@ public class PersonService {
         this.personRepo = personRepo;
     }
 
-    // Get all people
+    // Get All People
     public List<Person> getAllPeople() {
         if (personRepo.findAll().size() > 0) {
             return personRepo.findAll();

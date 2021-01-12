@@ -1,6 +1,9 @@
 package com.thread_count.app.product;
 
-import com.thread_count.app.order.Order;
+//import com.thread_count.app.order.Order;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.thread_count.app.cart.Cart;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -29,8 +32,9 @@ public class Product {
     private BigDecimal originalPrice;
     @Column(name = "DISCOUNT_PRICE")
     private BigDecimal discountPrice;
-    @ManyToOne
-    private Order order;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CART_ID")
+    private Cart cart;
 
     public Product() {
     }
@@ -107,13 +111,21 @@ public class Product {
         this.discountPrice = discountPrice;
     }
 
-    public Order getOrder() {
-        return order;
+    public Cart getCart() {
+        return cart;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
+
+    //    public Order getOrder() {
+//        return order;
+//    }
+//
+//    public void setOrder(Order order) {
+//        this.order = order;
+//    }
 
     @Override
     public String toString() {
@@ -127,7 +139,7 @@ public class Product {
                 ", images=" + images +
                 ", originalPrice=" + originalPrice +
                 ", discountPrice=" + discountPrice +
-                ", order=" + order +
+//                ", order=" + order +
                 '}';
     }
 }
