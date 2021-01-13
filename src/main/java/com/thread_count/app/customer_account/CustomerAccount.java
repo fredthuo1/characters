@@ -4,7 +4,6 @@ import com.thread_count.app.order.Order;
 import com.thread_count.app.person.Person;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "CUSTOMER_ACCOUNT")
@@ -16,6 +15,8 @@ public class CustomerAccount {
     @OneToOne
     @JoinColumn(name = "CUSTOMER_ACCOUNT_ID")
     private Person person;
+    @Column(name = "PASSWORD")
+    private String password;
 //    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
 //    private Set<Order> orderSet;
 
@@ -33,5 +34,13 @@ public class CustomerAccount {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
